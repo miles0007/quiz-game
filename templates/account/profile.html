@@ -1,0 +1,27 @@
+{% extends "layout.html" %}
+
+{% block title %}Instruction Page{% endblock %}
+
+{% block content %}
+
+<div class="container w-auto p-3 col-md-8 offset-md-2">
+    <div class="card">
+        <div class="card-header text-center">
+            Quiz Instructions
+        </div>
+        <div class="card-body">
+            <ul>
+                <li>This Quiz contains 10 questions. each questions carry 1 point.</li>
+                <li>No Negative marks included.</li>
+                <li>If the question is not answered the point for the question is 0.</li>
+                <li>Refreshing the page Will skip the Question without any evaluation.</li>
+            </ul>
+        </div>
+        <div class="card-footer text-muted text-center">
+            <a class="btn btn-primary" href="{% url 'Quiz:quiz_progress' %}">Start The Test</a>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+

@@ -1,0 +1,53 @@
+{% extends "layout.html" %}
+
+{% block title %}{% endblock %}
+
+{% comment %}
+<div id="question">
+    <form method="POST" action="{% url 'Quiz:quiz_progress' %}">
+        {% csrf_token %}
+        <h3>{{ question.question }}</h3>
+        <input type="hidden" name="question_id" value="{{ question.id }}">
+
+        {% for choice in question.choice_question.all %}
+        <div class=choices>
+            <input type="radio" name="choices" value='{{ choice.choice }}'>{{ choice.choice }}
+        </div>
+        {% endfor %}
+        <button type="submit">Next</button>
+    </form>
+    
+</div>
+{% endcomment %}
+
+{% block content %}
+<div class="container w-auto p-3">
+    <div class="card text-center">
+        <div class="card-header">
+            Question
+        </div>
+        <div class="card-body">
+            <div id="question">
+                <form method="POST" action="{% url 'Quiz:quiz_progress' %}">
+                    {% csrf_token %}
+                    <h3>{{ question.question }}</h3>
+                    <input type="hidden" name="question_id" value="{{ question.id }}">
+
+                    {% for choice in question.choice_question.all %}
+                    <div class="input-group p-2">
+                        <div class="input-group-prepend">
+                            <div class="input-group-text">
+                                <input type="radio" name="choices" value='{{ choice.choice }}'>
+                            </div>
+                        </div>
+                        <p class="form-control text-left">{{ choice.choice }}</p>
+                    </div>
+                    {% endfor %}
+                    <button class="btn btn-info" type="submit">Next</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+

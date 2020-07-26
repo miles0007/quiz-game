@@ -1,0 +1,36 @@
+{% extends "layout.html" %}
+{% load static %}
+
+{% block title %}Answer{% endblock %}
+
+{% block content %}
+<div class="container w-auto p-3">
+    <div class="d-flex justify-content-center p-3">
+        {% if message %}
+        <img src="{% static 'img/foursquare-check-in.svg'%}" alt="correct" height="200">
+        {% else %}
+        <img src="{% static 'img/wrong.svg'%}" alt="incorrect" height="200">
+        {% endif %}
+    </div>
+    <div class="d-flex justify-content-center p-3">
+        {% if message %}
+        <div class="h4">
+            Absolutely Correct
+        </div>
+        {% else %}
+        <div class="h4">
+            Wrong Answer, <span class="font-weight-light">The answer is</span>  
+            <span class="font-italic">{{ answer }}</span>
+        </div>
+        {% endif %}
+    </div>
+    <div class="d-flex justify-content-center mt-3">
+        <a class="btn btn-dark text-center" href="{% url 'Quiz:quiz_progress' %}">Continue</a>
+    </div>
+    
+</div>
+{% endblock %}
+
+
+        
+        

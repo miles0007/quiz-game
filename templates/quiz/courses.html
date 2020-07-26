@@ -1,0 +1,27 @@
+{% extends "layout.html" %}
+
+{% block title %}Quiz Category List{% endblock %}
+
+
+{% block content %}
+
+<div class="container w-auto p-3">
+    <div class="card text-center">
+        <div class="card-header">
+            Avaliable Quizes
+        </div>
+        <div class="card-body">
+            {% for course in courses %}
+            <div class="d-flex justify-content-center">
+                <p class="h3 text-center">
+                    <a href="{% url 'Quiz:quiz_' course.id %}">{{ course }}</a>
+                </p>
+            </div>
+            {% endfor %}
+        </div>
+        <div class="card-footer text-muted">
+            By Clicking the "Options" you will enter into Quiz environment.
+        </div>
+    </div>
+</div>
+{% endblock %}

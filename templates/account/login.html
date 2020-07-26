@@ -1,0 +1,30 @@
+{% extends "layout.html" %}
+{% load custom_tags %}
+{% block title %}Register{% endblock %}
+
+
+{% block content %}
+<div class="container w-auto p-3">
+    <div class="row">
+        <div class="col-md-12 align-items-center p-5">
+            <p class="h3 text-center">Quiz Login</p>
+            <form class="form-signin" method="POST">
+                {% csrf_token %}
+                <div class="fieldWrapper">
+                    {% for field in form %}
+                    <div class="fieldWrapper">
+                        <p class="text-danger">{{ field.errors }}</p>
+                        {{ field.label_tag }} {{ field|addclass:'form-control mb-3' }}
+                        {% if field.help_text %}
+                        <p class="help">{{ field.help_text|safe }}</p>
+                        {% endif %}
+                    </div>
+                    {% endfor %}
+                </div>
+                <button class="btn btn-lg btn-primary btn-block" type="submit">Login</button>
+            </form>
+            <a href="{% url 'Quiz:register' %}" class="btn btn-lg btn-secondary btn-block mt-3">Don't have an account?</a>
+        </div>
+    </div>
+</div>
+{% endblock %}
